@@ -5,12 +5,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.weather.weatherapp.Model.Weather;
+
 @Repository
 public class WeatherRepo {
 
     @Autowired
     @Qualifier("redistemp")
-    private RedisTemplate<String, String> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     public boolean checkIfWeatherDataAlreadyExists(String city){
         boolean exists;
@@ -21,13 +23,13 @@ public class WeatherRepo {
         exists = false;
         return exists;
     }
-    public void savePayload(String city, String payload){ 
-        redisTemplate.opsForValue().set(city, payload);
+    public void savePayload(Weather weather){ 
+        redisTemplate.opsForValue().set(weather.getName(), weather);
     }
 
-    public String getPayloadFromRedis(String city){
-        return (String) redisTemplate.opsForValue().get(city);
-    }
+    public Weather getWeatherObjectFromRedis(String city){
+        return (Weather) redisTemplate.opsForValue().get(city);
+        }
 
 
 

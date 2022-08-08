@@ -27,15 +27,13 @@ public class WeatherController {
     @GetMapping("/weatherdata")
     public String returnWeatherData(@RequestParam String city, Model model){
         if (repo.checkIfWeatherDataAlreadyExists(city)){
-            String payload = repo.getPayloadFromRedis(city);
-            Weather weather = service.createWeatherObject(payload);
+            Weather weather = repo.getWeatherObjectFromRedis(city);
             model.addAttribute("weather", weather);
             return "weatherdata";
 
         }
         else {
-            String payload = service.getWeatherPayload(city);
-            Weather weather = service.createWeatherObject(payload);
+            Weather weather = service.getWeatherObject(city);
             model.addAttribute("weather", weather);
             return "weatherdata";
         }        

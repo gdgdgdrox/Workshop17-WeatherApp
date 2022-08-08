@@ -1,57 +1,48 @@
 package com.weather.weatherapp.Model;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Weather {
-    private String description;
-    private String icon;
-    private BigDecimal temp;
-    private String city;
+public class Weather implements Serializable{
+    private String name;
+    private Main main;
+    //you can use SkyDescription[] weather, it works too
+    private ArrayList<SkyDescription> weather;
 
-    public String getDescription() {
-        return this.description;
+
+    public String getName() {
+        return this.name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getIcon() {
-        return this.icon;
+    public Main getMain() {
+        return this.main;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setMain(Main main) {
+        this.main = main;
     }
 
-    public BigDecimal getTemp() {
-        return this.temp;
+    public ArrayList<SkyDescription> getWeather() {
+        return this.weather;
     }
 
-    public void setTemp(BigDecimal temp) {
-        this.temp = temp;
+    public void setWeather(ArrayList<SkyDescription> weather) {
+        this.weather = weather;
     }
-
-    public String getCity() {
-        return this.city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
 
     @Override
     public String toString() {
         return "{" +
-            " description='" + getDescription() + "'" +
-            ", icon='" + getIcon() + "'" +
-            ", temp='" + getTemp() + "'" +
-            ", city='" + getCity() + "'" +
+            " name='" + getName() + "'" +
+            ", main='" + getMain().toString() + "'" +
+            ", weather='" + getWeather().toString() + "'" +
             "}";
     }
 
-    
 
 
 }

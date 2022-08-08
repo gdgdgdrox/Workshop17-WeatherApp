@@ -1,10 +1,17 @@
-'''
-URL = https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-API_KEY = c8b73117faf676bcabee56930192a207
-REDIS_PASSWORD = jF5LDrSZgohQ53V0cJFEiu8PbmmLzn4C
+'''FEATURE-getForObject-instead-of-getForEntity'''
+Instead of unmarshalling the json payload (String) to JsonObject then extract values
+from JsonObject to form my Weather object, i used restTemplate.getForObject() which 
+directly returns me my Weather object without the need to do JSON-P nonsense. 
 
-ICON = http://openweathermap.org/img/wn/10d@2x.png
-where 10d is the icon ID
+Key Changes
+1. Update Model classes to closely mirror the JSON payload
+2. Implement Serializable on all model classes
+3. Update RedisConfig to set value serializer as Object
+4. Update html page
+
+'''URL'''
+URL = https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+ICON = http://openweathermap.org/img/wn/10d@2x.png (where 10d is the icon ID)
 
 '''RESPONSE'''
 {

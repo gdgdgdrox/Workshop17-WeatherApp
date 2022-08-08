@@ -8,13 +8,10 @@
 </head>
 <body>
     <h1>Weather Information</h1>
-    <!-- for City, i used data-th-text. this appears to be the same as th:text (Description) -->
-    <p>City: <span data-th-text="${weather.city}"></span></p>
-    <p>Description: <span th:text="${weather.description}"></span></p>
-    <p>Temperature: <span th:text="${weather.temp}"></span> °C</p>
-    <!-- Linking to image -->
-    <p>Icon: <img th:src="@{http://openweathermap.org/img/wn/{icon}@2x.png(icon=${weather.icon})}"></p>
-    <!-- th:href=@{/} triggers the getmapping for index page -->
+    <p>City: <span data-th-text="${weather.name}"></span></p>
+    <p>Description: <span th:text="${weather.weather[0].description}"></span></p>
+    <p>Temperature: <span th:text="${weather.main.temp}"></span> °C</p>
+    <p>Icon: <img th:src="@{http://openweathermap.org/img/wn/{icon}@2x.png(icon=${weather.weather[0].icon})}"></p>
     <a th:href=@{/}><input type="button" value="back"></a>
 </body>
 </html>
