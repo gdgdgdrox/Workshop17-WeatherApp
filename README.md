@@ -1,7 +1,5 @@
 '''
 URL = https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-API_KEY = c8b73117faf676bcabee56930192a207
-REDIS_PASSWORD = jF5LDrSZgohQ53V0cJFEiu8PbmmLzn4C
 
 ICON = http://openweathermap.org/img/wn/10d@2x.png
 where 10d is the icon ID
